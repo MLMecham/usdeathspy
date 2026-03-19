@@ -26,10 +26,8 @@ def load_data(data_type, year):
     if not all_files:
         raise FileNotFoundError(f"No valid data files found in {data_dir}.")
 
-    # Grab the actual heavyweight
     raw_data_path = max(all_files, key=lambda f: f.stat().st_size)
 
-    # Hydration logic (keep this, it's good defensive engineering)
     if raw_data_path.stat().st_size == 0:
         print(f"Hydrating {raw_data_path.name}...")
         try:
